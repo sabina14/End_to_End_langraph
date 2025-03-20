@@ -1,6 +1,6 @@
 from typing import Annotated, Literal, Optional
 from typing_extensions import TypedDict
-from langgraph.graph.message import add_message
+from langgraph.graph.message import add_messages
 from typing import TypedDict, Annotated, List
 
 class State(TypedDict):

@@ -8,7 +8,7 @@ from src.langgraphagenticai.ui.streamlitui.display_result import DisplayREsultSt
 
 
 
-def load_langgraph_agenticai_app()
+def load_langgraph_agenticai_app():
     #Load Ui
     ui=LoadStreamlitUI()
     user_input=ui.load_streamlit_ui()

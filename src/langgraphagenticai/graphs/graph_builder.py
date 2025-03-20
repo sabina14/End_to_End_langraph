@@ -1,12 +1,12 @@
-from langgraph.graph import StateGraph , START,END , MessageState
-from langgraph.prebuilt import tools_condition, ToolsNode
+from langgraph.graph import StateGraph , START,END , MessagesState
+from langgraph.prebuilt import tools_condition, ToolNode
 from langchain_core.prompts import ChatPromptTemplate
 from src.langgraphagenticai.state.state import State
 from src.langgraphagenticai.nodes.basic_chatbot_node import BasicChatbotNode
 
 from src.langgraphagenticai.nodes.chatbot_with_tool_node import ChatbotWithToolNode
 
-from src.langgraphagenticai.tools.search_tool import get_tools,create_tool_node
+from src.langgraphagenticai.tools.search_tool import get_tools,create_tools_node
 
 class GraphBuilder:
 
@@ -37,7 +37,7 @@ class GraphBuilder:
         """
         ## Define the tool and tool node
         tools=get_tools()
-        tool_node=create_tool_node(tools)
+        tool_node=create_tools_node(tools)
 
         #define LLM
         llm=self.llm
