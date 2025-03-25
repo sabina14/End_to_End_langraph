@@ -11,7 +11,7 @@ class DisplayREsultStreamlit:
         self.user_message= user_message
     
 
-    def display_reult_on_ui(self):
+    def display_result_on_ui(self):
          usecase=self.usecase
          graph=self.graph
          user_message=self.user_message

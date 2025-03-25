@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import datetime
+from datetime import date
 
 from langchain_core.messages import AIMessage, HumanMessage
 
@@ -11,26 +11,37 @@ class LoadStreamlitUI:
     def __init__(self):
         self.config=Config()
         self.user_controls={}
+    
+    def initialize_session(self):
+        return {
+        "current_step": "requirements",
+        "requirements": "",
+        "user_stories": "",
+        "po_feedback": "",
+        "generated_code": "",
+        "review_feedback": "",
+        "decision": None
+    }
 
     def load_streamlit_ui(self):
-        st.set_page_config(page_title= "<3 " + self.config.get_page_title(), layout="wide")
-        st.header("<3" + self.config.get_page_title())
-        st.session_state.timeframe = ''
-        st.session_state.IsFetchButtonClicked=False
-        st.session.IsSDLC=False
+        st.set_page_config(page_title= "🤖 " + self.config.get_page_title(), layout="wide")
+        st.header("🤖 " + self.config.get_page_title())
+        #st.session_state.timeframe = ''
+        #st.session_state.IsFetchButtonClicked = False
+        #st.session_state.IsSDLC = False
 
         with st.sidebar:
 
             #get llm configs
 
-            llm_options=self.config.get_groq_model_options()
+            llm_options=self.config.get_llm_option()
             usecase_options=self.config.get_usecase_option()
 
             #LLM selection
 
-            self.user_controls['Selected LLM']=st.selectbox("Select LLM", llm_options)
+            self.user_controls['Selected_LLM']=st.selectbox("Select LLM", llm_options)
 
-            if self.user_control['Selected_LLM']=='Groq':
+            if self.user_controls['Selected_LLM']=='Groq':
                 #model selection
                 model_options= self.config.get_groq_model_options()
                 self.user_controls['Selected_groq_model'] = st.selectbox("Select Model", model_options)
@@ -42,7 +53,7 @@ class LoadStreamlitUI:
                     st.warning("⚠️ Please enter your GROQ API key to proceed. Don't have? refer : https://console.groq.com/keys")
 
             
-            self.user_control["selected_usecase"]=st.selectbox("Select  Usecases",usecase_options)
+            self.user_controls["selected_usecase"]=st.selectbox("Select  Usecases",usecase_options)
 
             if self.user_controls["selected_usecase"]=="Chatbot with Tools":
 

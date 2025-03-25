@@ -58,16 +58,16 @@ class GraphBuilder:
 
 
 
-def setup_graph(self,usecase:str):
-    """
-        Sets up the graph for the selected use case.
-    """
+    def setup_graph(self,usecase:str):
+        """
+            Sets up the graph for the selected use case.
+        """
 
-    if usecase == 'Basic Chatbot':
-        self.basic_chatbot_build_graph()
-    
-    if usecase== 'Chatbot withh Tool':
-        self.chatbot_with_tools_build_graph()
-    return self.graph_builder.compile()
+        if usecase == 'Basic Chatbot':
+            self.basic_chatbot_build_graph()
+        
+        if usecase== 'Chatbot withh Tool':
+            self.chatbot_with_tools_build_graph()
+        return self.graph_builder.compile()
     
 
