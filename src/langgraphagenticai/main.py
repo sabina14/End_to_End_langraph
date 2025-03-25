@@ -44,18 +44,18 @@ def load_langgraph_agenticai_app():
                     st.error("Error: No use case selected.")
                     return
                 
+                
+                
 
                 ### Graph Builder
                 graph_builder=GraphBuilder(model)
                 try:
                     graph = graph_builder.setup_graph(usecase)
                     DisplayREsultStreamlit(usecase,graph,user_message).display_result_on_ui()
-                    st.write("user_message",user_message)
-                    st.write("Model:", model)
-                    st.write("Usecase:", usecase)
+                    
                 except Exception as e:
                     st.error(f"Error: Graph setup failed - {e}")
-                    return
+                return
                 
 
             except Exception as e:
